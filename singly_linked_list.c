@@ -66,19 +66,17 @@ void printList(struct Node* head) {
 int main() {
     struct Node* newListHead = NULL;
 
-    prepend(&newListHead, "Peru");
-    prepend(&newListHead, "Albania");
-    prepend(&newListHead, "England");
-    prepend(&newListHead, "New Zealand");
-    prepend(&newListHead, "Germany");
-    prepend(&newListHead, "Thailand");
+    prepend(&newListHead, "1 Peru");
+    prepend(&newListHead, "2 Albania");
+    prepend(&newListHead, "3 England");
+    prepend(&newListHead, "4 New Zealand");
+    prepend(&newListHead, "5 Germany");
+    prepend(&newListHead, "6 Thailand");
 
     printf("\n");
     printList(newListHead);
-    printf("\n");
     append(&newListHead, "APPEND");
     printList(newListHead);
-    printf("\n");
     prepend(&newListHead, "PREPEND");
     printList(newListHead);
 
