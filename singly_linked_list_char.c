@@ -11,7 +11,7 @@ typedef struct Node {
 // returns a pointer to a new node of type Node 
 Node* createNodeChar(char* data) {
     // allocate size of struct of heap and assign it to a pointer named newNode of type Node 
-    Node* newNode = malloc(sizeof(struct Node));
+    Node* newNode = malloc(sizeof(Node));
     if (newNode == NULL) {
         printf("Memory allocation failed\n");
         exit(1);
@@ -78,7 +78,7 @@ void appendChar(Node** headRef, char* data) {
 }
 
 
-void printListChar( Node* head) {
+void printListChar(Node* head) {
     Node* current = head;
     int count = 0;
 
