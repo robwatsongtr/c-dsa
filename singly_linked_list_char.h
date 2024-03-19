@@ -3,10 +3,10 @@
 
 struct Node;
 
-struct Node* createNode(char* data);
-void pushFront(struct Node** headRef, char* data);
-char* popFront(struct Node** headRef);
-void append(struct Node** headRef, char* data);
-void printList(struct Node* head);
+struct Node* createNodeChar(char* data);
+void pushFrontChar(struct Node** headRef, char* data);
+char* popFrontChar(struct Node** headRef);
+void appendChar(struct Node** headRef, char* data);
+void printListChar(struct Node* head);
 
 #endif

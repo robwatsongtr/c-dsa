@@ -9,7 +9,7 @@ struct Node {
 };
 
 // returns a pointer to a new node of type Node 
-struct Node* createNode(char* data) {
+struct Node* createNodeChar(char* data) {
     // allocate size of struct of heap and assign it to a pointer named newNode of type Node 
     struct Node* newNode = malloc(sizeof(struct Node));
     if (newNode == NULL) {
@@ -32,7 +32,7 @@ struct Node* createNode(char* data) {
 }
 
 // We use a double pointer in order to be able to modify head pointer.
-void pushFront(struct Node** headRef, char* data) {
+void pushFrontChar(struct Node** headRef, char* data) {
     struct Node* newNode = createNode(data);
 
     // Link up the new node to the head,
@@ -42,7 +42,7 @@ void pushFront(struct Node** headRef, char* data) {
     *headRef = newNode; 
 }
 
-char* popFront(struct Node** headRef) {
+char* popFrontChar(struct Node** headRef) {
     struct Node* head; // declare new head pointer 
     char* result;
 
@@ -61,7 +61,7 @@ char* popFront(struct Node** headRef) {
     return result;
 }
 
-void append(struct Node** headRef, char* data) {
+void appendChar(struct Node** headRef, char* data) {
     struct Node* newNode = createNode(data);
     // empty list check
     if (*headRef == NULL) {
@@ -78,7 +78,7 @@ void append(struct Node** headRef, char* data) {
 }
 
 
-void printList(struct Node* head) {
+void printListChar(struct Node* head) {
     struct Node* current = head;
     int count = 0;
 

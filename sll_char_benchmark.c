@@ -17,7 +17,8 @@ int main() {
 
     srand(time(NULL)); // initialize the random number generator with the seed of the time 
 
-    gettimeofday(&start, NULL); // start clock
+    // START: at a STRING_LENGTH of 128 and i of 100000 this loop spits out about 12.3mb. 
+    gettimeofday(&start, NULL); 
 
     for (i = 0; i < 100000; i++) {
         char random_string[STRING_LENGTH +1]; // +1 for null terminator 
@@ -27,14 +28,12 @@ int main() {
         } 
         random_string[STRING_LENGTH] = '\0'; // add the null terminator   
 
-        pushFront(&list, random_string); 
+        pushFrontChar(&list, random_string); 
     }
-
+    // END 
     gettimeofday(&end, NULL); // end clock 
 
-    printList(list);
-
-    
+    printListChar(list);
 
     // Calculate the elapsed time in microseconds. It adds the seconds to the microseconds.
     elapsed_time = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec);
