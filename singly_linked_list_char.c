@@ -3,15 +3,15 @@
 #include <string.h>
 #include "singly_linked_list_char.h"
 
-struct Node {
+typedef struct Node {
     char* data; // rocking the strings 
     struct Node* next; // pointer to another node struct 
-};
+} Node;
 
 // returns a pointer to a new node of type Node 
-struct Node* createNodeChar(char* data) {
+Node* createNodeChar(char* data) {
     // allocate size of struct of heap and assign it to a pointer named newNode of type Node 
-    struct Node* newNode = malloc(sizeof(struct Node));
+    Node* newNode = malloc(sizeof(struct Node));
     if (newNode == NULL) {
         printf("Memory allocation failed\n");
         exit(1);
@@ -32,8 +32,8 @@ struct Node* createNodeChar(char* data) {
 }
 
 // We use a double pointer in order to be able to modify head pointer.
-void pushFrontChar(struct Node** headRef, char* data) {
-    struct Node* newNode = createNode(data);
+void pushFrontChar(Node** headRef, char* data) {
+    Node* newNode = createNode(data);
 
     // Link up the new node to the head,
     newNode->next = *headRef; 
@@ -42,8 +42,8 @@ void pushFrontChar(struct Node** headRef, char* data) {
     *headRef = newNode; 
 }
 
-char* popFrontChar(struct Node** headRef) {
-    struct Node* head; // declare new head pointer 
+char* popFrontChar(Node** headRef) {
+    Node* head; // declare new head pointer 
     char* result;
 
     // copy the address of the first node into head variable 
@@ -61,15 +61,15 @@ char* popFrontChar(struct Node** headRef) {
     return result;
 }
 
-void appendChar(struct Node** headRef, char* data) {
-    struct Node* newNode = createNode(data);
+void appendChar(Node** headRef, char* data) {
+    Node* newNode = createNode(data);
     // empty list check
     if (*headRef == NULL) {
         *headRef = newNode;
         return; 
     }
     // traverse list to end 
-    struct Node* temp = *headRef;
+    Node* temp = *headRef;
     while (temp->next != NULL) {
         temp = temp->next;
     }
@@ -78,8 +78,8 @@ void appendChar(struct Node** headRef, char* data) {
 }
 
 
-void printListChar(struct Node* head) {
-    struct Node* current = head;
+void printListChar( Node* head) {
+    Node* current = head;
     int count = 0;
 
     while (current != NULL) {
