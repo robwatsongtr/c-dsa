@@ -1,15 +1,49 @@
 #include <stdio.h>
 #include "singly_linked_list.h"
+#include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
+
+#define STRING_LENGTH 128
 
 int main() {
+    // timeval is a structure defined in <sys/time.h> for seconds and microseconds 
+    struct timeval start, end;
 
     struct Node* list = NULL;
 
-    
+    double elapsed_time;
+    int i, j;
 
+    srand(time(NULL)); // initialize the random number generator with the seed of the time 
+
+    gettimeofday(&start, NULL); // start clock
+
+    for (i = 0; i < 100000; i++) {
+        char random_string[STRING_LENGTH +1]; // +1 for null terminator 
+
+        for(j = 0; j < STRING_LENGTH ; j++) {
+            random_string[j] = 'a' + (rand() % 26);
+        } 
+        random_string[STRING_LENGTH] = '\0'; // add the null terminator   
+
+        pushFront(&list, random_string); 
+    }
+
+    printList(list);
+
+    gettimeofday(&end, NULL); // end clock 
+
+    // Calculate the elapsed time in microseconds. It adds the seconds to the microseconds.
+    elapsed_time = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec);
+
+    printf("Time taken: %f microseconds\n", elapsed_time);
+    printf("Time taken: %f seconds\n", elapsed_time / 1000000.0);
 
     return 0;
 }
+
+
 
 /*
 
