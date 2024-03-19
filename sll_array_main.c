@@ -30,9 +30,11 @@ int main() {
         pushFront(&list, random_string); 
     }
 
+    gettimeofday(&end, NULL); // end clock 
+
     printList(list);
 
-    gettimeofday(&end, NULL); // end clock 
+    
 
     // Calculate the elapsed time in microseconds. It adds the seconds to the microseconds.
     elapsed_time = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec);
