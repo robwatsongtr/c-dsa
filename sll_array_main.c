@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "singly_linked_list.h"
+#include "singly_linked_list_char.h"
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>

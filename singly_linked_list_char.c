@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "singly_linked_list.h"
+#include "singly_linked_list_char.h"
 
 struct Node {
     char* data; // rocking the strings 
