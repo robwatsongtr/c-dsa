@@ -28,6 +28,7 @@ TreeNodeChar* createTreeNodeChar(char* data) {
     newTreeNode->data = malloc(strlen(data) +1);
     if (newTreeNode->data == NULL) {
         printf("Memory allocation failed\n");
+        free(newTreeNode); // Freeing the allocated TreeNodeChar
         exit(1);
     }
     strcpy(newTreeNode->data, data);
@@ -50,4 +51,41 @@ ListNode* createListNode(TreeNodeChar* treeNode) {
     newListNode->next = NULL;
 
     return newListNode; 
+}
+
+// Push and Pop front of list 
+void pushFrontBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode) {
+    ListNode* newNode = createListNode(treeNode);
+    newNode->next = *headRef;
+    *headRef = newNode;
+}
+
+TreeNodeChar* popFrontBinTreeNode(ListNode** headRef) {
+    ListNode* head;
+    TreeNodeChar* returnedTreeNode;
+
+    head = *headRef;
+    returnedTreeNode = head->tree_node;
+    *headRef = head->next;
+
+    free(head);
+
+    return returnedTreeNode;
+}
+
+// append to end of list 
+void appendBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode) {
+    ListNode* newNode = createListNode(treeNode);
+
+    if (*headRef == NULL) {
+        *headRef = newNode;
+        return; 
+    }
+
+    ListNode* temp = *headRef;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    
+    temp->next = newNode; 
 }
