@@ -3,6 +3,10 @@
 #include <string.h>
 #include "singly_linked_list_bin_tree.h"
 
+/*
+All needed functionality for a stack or a queue, as of 3/20/24
+*/
+
 // structure for a binary tree node that can store a char
 typedef struct TreeNodeChar {
     char* data;
@@ -53,27 +57,40 @@ ListNode* createListNode(TreeNodeChar* treeNode) {
     return newListNode; 
 }
 
-// Push and Pop front of list 
+// --------------------------Push and Pop front of list--------------------------
 void pushFrontBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode) {
     ListNode* newNode = createListNode(treeNode);
+
+    // Set the next of the newly allocated node to the 'old head', which
+    // is the current first node of the list 
     newNode->next = *headRef;
+
+    // Now change the head pointer to point to the new new node, making it the 'new head'
     *headRef = newNode;
 }
 
 TreeNodeChar* popFrontBinTreeNode(ListNode** headRef) {
-    ListNode* head;
-    TreeNodeChar* returnedTreeNode;
+    ListNode* head; // declare new head pointer 
+    TreeNodeChar* returnedTreeNode; // variable to store the result obviously
 
-    head = *headRef;
-    returnedTreeNode = head->tree_node;
-    *headRef = head->next;
+    // copy address of first node into a new head pointer
+    // head becomes the 'old head'
+    head = *headRef; 
 
-    free(head);
+    // get the data
+    returnedTreeNode = head->tree_node; 
+
+    // new head pointer is the next node over now, unlinking 
+    // that makes it the 'new head'
+    *headRef = head->next; 
+
+    // free the memory from the old head 
+    free(head); 
 
     return returnedTreeNode;
 }
 
-// append to end of list 
+// -------------------------Append to end of list-------------------------------
 void appendBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode) {
     ListNode* newNode = createListNode(treeNode);
 

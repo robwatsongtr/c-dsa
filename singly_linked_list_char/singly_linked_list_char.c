@@ -35,27 +35,30 @@ Node* createNodeChar(char* data) {
 void pushFrontChar(Node** headRef, char* data) {
     Node* newNode = createNode(data);
 
-    // Link up the new node to the head,
+    // Set the next of the newly allocated node to the 'old head', which
+    // is the current first node of the list 
     newNode->next = *headRef; 
     
-    // Head pointer is assigned to the new node, making it the new head 
+    // Now change the head pointer to point to the new new node, making it the 'new head'
     *headRef = newNode; 
 }
 
 char* popFrontChar(Node** headRef) {
     Node* head; // declare new head pointer 
-    char* result;
+    char* result; // variable to store the result obviously
 
-    // copy the address of the first node into head variable 
+    // copy address of first node into a new head pointer
+    // head becomes the 'old head'
     head = *headRef;
 
     // get the data 
     result = head->data;
 
-    // head pointer is now assigned to the next node, removing the link 
+    // new head pointer is the next node over now, unlinking 
+    // that makes it the 'new head'
     *headRef = head->next;
 
-    // free the memory 
+    // free the memory from the old head 
     free(head);
 
     return result;
