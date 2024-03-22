@@ -7,19 +7,6 @@
 All needed functionality for a stack or a queue, as of 3/20/24
 */
 
-// structure for a binary tree node that can store a char
-typedef struct TreeNodeChar {
-    char* data;
-    TreeNodeChar* left;
-    TreeNodeChar* right;
-} TreeNodeChar;
-
-// structure for a linked list node that can store a binary tree node type. 
-typedef struct ListNode {
-    TreeNodeChar* tree_node;
-    ListNode* next;
-} ListNode;
-
 // Create a binary tree node that can store type char 
 TreeNodeChar* createTreeNodeChar(char* data) {
     TreeNodeChar* newTreeNode = malloc(sizeof(TreeNodeChar));
@@ -43,7 +30,7 @@ TreeNodeChar* createTreeNodeChar(char* data) {
     return newTreeNode;
 };
 
-// Create a linked list node that can store type TreeNodeChar above. Teamwork!
+// Create a linked list node that can store type TreeNodeChar above. 
 ListNode* createListNode(TreeNodeChar* treeNode) {
     ListNode* newListNode = malloc(sizeof(ListNode));
     if (newListNode == NULL) {
@@ -70,6 +57,8 @@ void pushFrontBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode) {
 }
 
 TreeNodeChar* popFrontBinTreeNode(ListNode** headRef) {
+    if (*headRef == NULL) return NULL; // Return NULL if list is empty
+
     ListNode* head; // declare new head pointer 
     TreeNodeChar* returnedTreeNode; // variable to store the result obviously
 
@@ -105,4 +94,19 @@ void appendBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode) {
     }
     
     temp->next = newNode; 
+}
+
+void printListBinTree(ListNode* head) {
+    ListNode* current = head;
+    int count = 0;
+
+    while (current != NULL) {
+        count++; 
+        // this accesses the tree_node field in ListNode, then goes to the data field in tree_node
+        printf("%s", current->tree_node->data);
+        printf("\n");
+        current = current->next;
+    }
+    printf("Length: %d\n", count);
+    printf("\n");
 }
