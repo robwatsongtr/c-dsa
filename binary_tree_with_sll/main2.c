@@ -2,6 +2,9 @@
 #include "singly_linked_list_bin_tree.h"
 #include <stdlib.h>
 
+// make a function that returns an inorder DFS on a tree as a linked list 
+
+
 int main() {
     struct TreeNodeChar* root = createTreeNodeChar("root");
     struct TreeNodeChar* node2 = createTreeNodeChar("node_2");
@@ -18,4 +21,10 @@ int main() {
     node3->left = node6;
     node3->right = node7;
 
+    printf("Inorder traversal: ");
+    printf("\n");
+    printInorderTraversal(root);
+    printf("\n");
+
+    return 0;
 }

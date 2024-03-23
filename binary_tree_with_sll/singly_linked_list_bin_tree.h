@@ -14,6 +14,7 @@ typedef struct ListNode {
     struct ListNode* next;
 } ListNode;
 
+// for linked list 
 TreeNodeChar* createTreeNodeChar(char* data);
 ListNode* createListNode(TreeNodeChar* treeNode);
 
@@ -21,5 +22,8 @@ void pushFrontBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode);
 TreeNodeChar* popFrontBinTreeNode(ListNode** headRef);
 void appendBinTreeNode(ListNode** headRef, TreeNodeChar* treeNode);
 void printListBinTree(ListNode* head);
+
+// for bin tree 
+void printInorderTraversal(TreeNodeChar* root);
 
 #endif

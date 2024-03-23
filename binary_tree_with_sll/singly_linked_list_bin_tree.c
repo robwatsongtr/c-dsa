@@ -110,3 +110,14 @@ void printListBinTree(ListNode* head) {
     printf("Length: %d\n", count);
     printf("\n");
 }
+
+// for bin tree 
+
+void printInorderTraversal(TreeNodeChar* root) {
+    if (root == NULL) return;
+
+    printInorderTraversal(root->left);
+    printf("%s ", root->data);
+    printf("\n");
+    printInorderTraversal(root->right);
+}
